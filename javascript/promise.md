@@ -1,11 +1,24 @@
 # Promise
 
 
-Syntax
+## Syntax
 
 ```
-new Promise( /* executor */ function(resolve, reject) { ... } );
+let p = new Promise( /* executor */ function(resolve, reject) { ... } )
+            .then(value => {...}, error => {...})
+            .catch(error => {...} )
 ```
+
+## Terminology
+
+A Promise can be
+    - fulfilled
+    - rejected
+    - pending: hasn't fulfilled or rejected.
+    - settled: has fulfilled or rejected.
+
+
+## Notes
 
 - The executor function is immediately invoke when Promise object is created.
 
@@ -15,34 +28,36 @@ new Promise( /* executor */ function(resolve, reject) { ... } );
   the handler will still be executed. So there is no race condition before asynchronus
   codes completion and its handler being attached.
 
+- Nothing special about catch(), it's just sugar for then(undefined, errFunc)
+
 - `.then` and `.catch` __return a new Promise every time__.
 
-```
-let p1 = Promise.resolve(1);
+    ```
+    let p1 = Promise.resolve(1);
 
-// return a simple value inside "then" will in turn return a Promise resolved with that value
-let p2 = p1.then((value) => return value * 2)
+    // return a simple value inside "then" will in turn return a Promise resolved with that value
+    let p2 = p1.then((value) => return value * 2)
 
-// you can also return a Promise
-let p3 = p1.then((value) => return Promise.reject("error"));
+    // you can also return a Promise
+    let p3 = p1.then((value) => return Promise.reject("error"));
 
-// you can throw error to project a rejected Promise
-let p4 = p1.then((value) => throw "error");
+    // you can throw error to project a rejected Promise
+    let p4 = p1.then((value) => throw "error");
 
-// returning nothing will result in a fulfilled Promise with `undefined` as value
-let p5 = p1.then((value) => console.log(value)) // print 1
-		   .then((value) => console.log(value)); // print undefined
-```
+    // returning nothing will result in a fulfilled Promise with `undefined` as value
+    let p5 = p1.then((value) => console.log(value)) // print 1
+               .then((value) => console.log(value)); // print undefined
+    ```
 
-Note that if a `.catch` goes smoothly without error, it will then returned a fulfilled Promise with
-returned value
+    Note that if a `.catch` goes smoothly without error, it will then returned a fulfilled Promise with
+    returned value
 
 
-```
-let p1 = Promise.reject("error")
-				.catch((err) => return 5)
-				.then((value) => console.log(value)); // will print 5
-```
+    ```
+    let p1 = Promise.reject("error")
+                    .catch((err) => return 5)
+                    .then((value) => console.log(value)); // will print 5
+    ```
 
 
 
@@ -87,7 +102,10 @@ rejection reason.
 
 
 
-## Example: using `Promise.race` to implement timeout
+## Example pattern
+
+
+### Example: using `Promise.race` to implement timeout
 
 ```
 var p = Promise.race([
@@ -99,3 +117,22 @@ var p = Promise.race([
 p.then(response => console.log(response))
 p.catch(error => console.log(error))
 ```
+
+
+### Creating a sequence
+
+Suppose we want to download story chapters one by one in order
+
+```
+// Loop through our chapter urls
+let chaptersLoading = story.chapterUrls.reduce(function(sequence, chapterUrl) {
+  // Add these actions to the end of the sequence
+  return sequence.then(function() {
+    return getJSON(chapterUrl);
+  }).then(function(chapter) {
+    addHtmlToPage(chapter.html);
+  });
+}, Promise.resolve())
+```
+
+
