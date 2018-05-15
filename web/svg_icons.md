@@ -1,5 +1,14 @@
 # SVG Icons System
 
+SVG is a XML, and you can’t load a XML file from different locations.
+
+
+
+
+
+
+
+
 ## Approaches
 
 ### Inlined SVG

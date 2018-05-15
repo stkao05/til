@@ -1,0 +1,1 @@
+- Management of time should be based on management of energy
