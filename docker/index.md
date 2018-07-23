@@ -1,19 +1,25 @@
 # Docker
 
-
 `Dockerfile`
-It describes how the image should be built. 
+It describes how the image should be built.
+
 
 __Build__
-To actually build an image (assume your current directly contains the image)
 ```
 docker build -t {IMAGE_NAME} {CONTEXT_PATH}
 ```
 
 CONTEXT_PATH: more like a search path. If you reference any file in your `Dockerfile`, the file needed to be within the context.
+              Make sure you the directory of context path does not contains too many files (i.e. your source codes directory)
+              Only file needed for building img is needed.
 
+__Run__
 
+```
+docker run --volume ~/todoist/todoist:/home/ec2-user/todoist --rm jenkin/i18n
+```
 
+- 'volume': mount your local file directory to the container
 
 
 
