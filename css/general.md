@@ -30,3 +30,23 @@ Solution: Children component could use BEM style
 // all the variant style needed.
 <a class="ist-btn ist-btn--sm" />
 ```
+
+
+# Problem with using genetic name 
+
+```
+<body>
+    <h1 class="header"> </h1>
+    <svg class="close-icon"> </svg>
+
+    <div class="some-children-component">
+        <h6 class="header"> </h6>
+    </div>
+</body>
+```
+
+The CSS style could leak down to children component.
+
+__Solution__
+Children component could use BEM style
+

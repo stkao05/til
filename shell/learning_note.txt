@@ -1,0 +1,81 @@
+# Shell script notes
+
+https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/Introduction/Introduction.htm
+
+
+# Variable 
+
+```
+#!/bin/sh
+MY_MESSAGE="Hello World"
+echo $MY_MESSAGE
+```
+
+`VAR = value`: cannot have space between '=', else we can't distinguish `VAR` from command
+
+`$` is a special character which will be interpreted within the string
+```
+"Hello $NAME"
+```
+
+
+Special variable 
+`$0`: base name of the program
+`$1...$9`: parameter of the script was called with
+`$?`: exit value of last call
+
+
+
+
+# Exec Environment 
+
+When executing another shell script, 
+```
+$ ./test.sh
+```
+
+A new shell is spawn to run the script, and therefore, any environmental change will not persist. 
+
+You can run the script within the current interactive shell by 'source' the script, via `dot` command
+
+```
+$ . ./test.sh
+```
+
+
+# Test
+`[` is a symbolic link to `test`. 
+
+```
+$ which [
+/usr/bin/[
+
+$ ls -l /usr/bin/[
+lrwxrwxrwx 1 root root 4 Mar 27 2000 /usr/bin/[ -> test
+```
+
+This mean `[` is a program and it must follow by space
+
+```
+    // not work because no space between [ and $
+    if [$INPUT -gt 0 ]
+    then
+        echo "Greater than zero"
+    fi
+```
+
+
+# Use of "\" and ";"
+
+
+# Define function
+
+When define a library script to be sourced by other script, we usually don't add the header as this would spawn another shell.
+
+```
+#!/bin/sh
+```
+
+
+
+

@@ -1,0 +1,32 @@
+Not beginner / Not a export 
+
+- You are comfortable writing code from scratch 
+- You peek inside the libs you use
+- You feel like your code is mediocre. You don't know what to do about it.
+- You don't quite grok all the code you read 
+- You can't explain what you know
+- You aren't confident debugging
+- You rely on references way too much
+
+________
+
+Expert programmer 
+
+- project manager, hit every deadline (regardless of quality)
+- Customer: problem quickies
+- Programmer: the programmer they are most likely to want to go into battle with
+
+
+______
+
+Suggestion
+
+- Ask why obsessively
+- Teach and/or speak at an event
+- Secret of JavaScript NinJa
+- Experiment recklessly
+- Have opinion
+- Program a lot
+- Stop programming
+- Write in another language for a while
+- Break free of imposter syndrome
