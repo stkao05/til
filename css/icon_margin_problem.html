@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <style>
+            body {
+                width: 700px;
+                margin: 2em auto;
+                font-family: "Helvetica Neue";
+            }
+
+            p {
+                font-size: 1.25rem;
+                line-height: 1.25em;
+            }
+
+            ul {
+                font-size: 1.25em;
+            }
+
+            ul li {
+                margin-bottom: .5em;
+            }
+
+            #surrounding-margin-demo {
+                outline: 1px blue solid;
+            }
+
+            #surrounding-margin-demo path {
+                outline: 1px red solid;
+                background: white;
+            }
+
+            .demo ul {
+                list-style: none;
+                margin: 0px;
+                padding: 0px;
+            }
+
+			.demo li {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 1em;
+			}
+
+            .demo li svg {
+				display: inline-block;
+			}
+
+            .demo li p {
+				display: inline-block;
+                font-size: 14px;
+                line-height: 1.25em;
+                margin: 0;
+            }
+
+            .icon-wrap {
+                height: 17px;
+                width: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+
+
+    </head>
+
+
+    <body>
+        <h1>Vertial alignment issue</h1>
+
+        <p>The document illustrate the issue with having surrounding margin around the icon</p>
+
+        <figure>
+            <svg id="surrounding-margin-demo" width="24" height="24"><path fill="currentColor" d="M12 4c1 5 5 5 5 9a5 5 0 0 1-5 5c-2.8 0-5-2-5-5 0-4 4-4 5-9z"></path></svg>
+            <figcaption>Icon with surrounding margin</figcaption>
+        </figure>
+
+        <hr />
+
+        <h1>Example</h1>
+        <ul>
+            <li>You have a vertical menu, and each menu item consistes of icon and text</li>
+            <li>You want to the vertical center of the icon align with the vetical central of the text</li>
+        </ul>
+
+
+        <div class="demo">
+            <h2>Approach 1: Using Icons with Surrounding Margin</h2>
+            <p>🚫You can't apply the same vertical alignment rule to each menu since each icon has different size of vertical surrounding margin</p>
+
+            <ul>
+                <li>
+                    <span class="icon-wrap">
+						<svg width="24" height="24">
+							<path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" fill="currentColor" fillRule="nonzero" />
+						</svg>
+                    </span>
+
+                    <p>Work Project</p>
+                </li>
+                <li>
+                    <span class="icon-wrap">
+						<svg width="24" height="24">
+							<path fill="currentColor" d="M5 8.67C5 7.75 5.84 7 6.87 7h8.19c.52 0 1.18.3 1.48.67l2.92 3.66c.3.37.3.97 0 1.34l-2.92 3.66c-.3.37-.96.67-1.48.67h-8.2C5.85 17 5 16.25 5 15.33V8.67z" />
+						</svg>
+                    </span>
+                    <p>Important Label</p>
+                </li>
+                <li>
+                    <span class="icon-wrap">
+						<svg width="24" height="24"><path fill="currentColor" d="M12 4c1 5 5 5 5 9a5 5 0 0 1-5 5c-2.8 0-5-2-5-5 0-4 4-4 5-9z"></path></svg>
+                    </span>
+                    <p>Top Priority Filter</p>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="demo">
+            <h2>Approach 2: Using Icons with No Surrounding Margin</h2>
+            <ul>
+                <li>
+                    <span class="icon-wrap">
+                        <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><g id="Page-1" fill="none" fill-rule="evenodd"><g transform="translate(-7 -7)" fill="currentColor" fill-rule="nonzero"><path d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10z" id="Project"/></g></g></svg>
+                    </span>
+                    <p>Work Project</p>
+                </li>
+                <li>
+                    <span class="icon-wrap">
+						<svg width="15" height="10" viewBox="0 0 15 10" xmlns="http://www.w3.org/2000/svg"><g id="Page-1" fill="none" fill-rule="evenodd"><g id="Artboard" transform="translate(-5 -7)" fill="currentColor" fill-rule="nonzero"><path d="M5 8.7C5 7.7 5.8 7 6.9 7H15c.5 0 1.1.3 1.4.7l3 3.6c.3.4.3 1 0 1.4l-3 3.6c-.3.4-1 .7-1.4.7H6.9c-1 0-1.9-.8-1.9-1.7V8.7z"/></g></g></svg>
+                    </span>
+                    <p>Important Label</p>
+                </li>
+                <li>
+                    <span class="icon-wrap">
+						<svg width="10" height="14" viewBox="0 0 10 14" xmlns="http://www.w3.org/2000/svg"><g id="Page-1" fill="none" fill-rule="evenodd"><g id="Artboard" transform="translate(-7 -4)" fill="currentColor" fill-rule="nonzero"><path d="M12 4c1 5 5 5 5 9a5 5 0 0 1-5 5c-2.8 0-5-2-5-5 0-4 4-4 5-9z" id="Filter"/></g></g></svg>
+                    </span>
+                    <p>Top Priority Filter</p>
+                </li>
+            </ul>
+        </div>
+
+
+    </body>
+
+
+</html>
